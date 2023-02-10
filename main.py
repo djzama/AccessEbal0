@@ -1,6 +1,13 @@
 import cv2
-
+import os
+import mysql.connector
 # Create a Haar cascade classifier for face detection
+db_connect = mysql.connector.connect(
+    host=os.getenv(),
+    user=os.getenv('adm1n'),
+    password=os.getenv('str0ng_P@sswd_0k'),
+    database=os.getenv("faces")
+)
 face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 
 # Connect to the IP camera

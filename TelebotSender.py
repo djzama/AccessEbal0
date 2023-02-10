@@ -2,7 +2,7 @@ from aiogram import *
 import os
 import time
 
-API_TOKEN = '5876734711:AAEuAXxnxjF31z-_bPZAxNRrOaOzfdOjb6M'
+API_TOKEN = os.getenv("TelegramBotApi")
 
 
 bot = Bot(token=API_TOKEN)

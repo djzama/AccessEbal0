@@ -1,0 +1,13 @@
+version: '0.6'
+services:
+  database:
+    build: ./mysql/
+    command: mysqld --user=root --verbose
+    environment:
+      MYSQL_DATABASE: "faces"
+      MYSQL_USER: "adm1n"
+      MYSQL_PASSWORD: "str0ng_P@sswd_0k"
+      MYSQL_ROOT_PASSWORD: "snorki"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      TelegramBotApi: "5876734711:AAEuAXxnxjF31z-_bPZAxNRrOaOzfdOjb6M"
+
