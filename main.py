@@ -3,7 +3,7 @@ import os
 import mysql.connector
 # Create a Haar cascade classifier for face detection
 db_connect = mysql.connector.connect(
-    host=os.getenv(),
+    host=os.getenv('127.0.0.1'),
     user=os.getenv('adm1n'),
     password=os.getenv('str0ng_P@sswd_0k'),
     database=os.getenv("faces")
