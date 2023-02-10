@@ -9,5 +9,7 @@ services:
       MYSQL_PASSWORD: "str0ng_P@sswd_0k"
       MYSQL_ROOT_PASSWORD: "snorki"
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+  main:
+      command: python3 main.py
       TelegramBotApi: "5876734711:AAEuAXxnxjF31z-_bPZAxNRrOaOzfdOjb6M"
 
