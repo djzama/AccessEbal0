@@ -10,8 +10,8 @@ services:
       MYSQL_ROOT_PASSWORD: "snorki"
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
   main:
-      build: ./
-      command: python3 -m pip3 install -r requarememnts.txt
+      build: ./app
       command: python3 main.py
-      TelegramBotApi: "5876734711:AAEuAXxnxjF31z-_bPZAxNRrOaOzfdOjb6M"
+      environment:
+        TelegramBotApi: "5876734711:AAEuAXxnxjF31z-_bPZAxNRrOaOzfdOjb6M"
 

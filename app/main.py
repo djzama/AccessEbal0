@@ -1,7 +1,7 @@
 import os
 import mysql.connector
 
-from ai.cam import face_detect_loop
+from cam import face_detect_loop
 # Create a Haar cascade classifier for face detection
 db_connect = mysql.connector.connect(
     host='127.0.0.1',
