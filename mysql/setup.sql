@@ -2,9 +2,11 @@ CREATE DATABASE `IdenFaces1`;
 
 USE `IdenFaces1`;
 --- Faces tables
-CREATE TABLE faces (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    face BLOB
+CREATE TABLE People (
+    "id" INT NOT NULL,
+    "name" VARCHAR(255),
+    "age" INT,
+    "gender" VARCHAR(7),
+    "profession" VARCHAR(255)
 );
 
-INSERT INTO `IdenFaces1` VALUES
