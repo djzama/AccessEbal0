@@ -1,6 +1,8 @@
 from aiogram import *
+import asyncio
 import cv2
 import sqlite3
+import time
 
 API_TOKEN = '5876734711:AAEuAXxnxjF31z-_bPZAxNRrOaOzfdOjb6M'
 bot = Bot(token=API_TOKEN)
@@ -38,7 +40,8 @@ async def echo(message: types.Message):
 					cv2.putText(frame, "Gender:" + str(i[3]), (x, y + h + 90), font, fontscale, fontcolor, stroke)
 					cv2.putText(frame, "Criminal Records:" + str(i[4]), (x, y + h + 120), font, fontscale, fontcolor,stroke)
 					cv2.putText(frame, "Profession:" + str(i[5]), (x, y + h + 150), font, fontscale, fontcolor,stroke)
-					await message.answer("К вам пришел {0}".format(str(i[1])))
+					await message.answer("К вам пришел {0} в {1}".format(str(i[1]),Vremya()))
+					await asyncio.sleep(0.5)
 				conn.commit()
 			else:
 				cv2.putText(frame, "Name:" + "Unknown", (x, y + h + 30), font, fontscale, fontcolor, stroke)
@@ -48,6 +51,12 @@ async def echo(message: types.Message):
 			break;
 	cam.release()
 	cv2.destroyAllWindows()
+
+def Vremya():
+	t = time.localtime()
+	current_time = time.strftime("%H:%M:%S", t)
+	return current_time
+
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
