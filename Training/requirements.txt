@@ -1,0 +1,7 @@
+numpy
+pillow
+opencv-python
+aiogram
+mysql
+opencv_contrib_python
+opencv-python-headless

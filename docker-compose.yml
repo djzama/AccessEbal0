@@ -1,0 +1,28 @@
+version: '3.3'
+volumes:
+  data-volume: {}
+  mysqlvol_errorlog:
+services:
+  main:
+    build: ./Video
+    restart: always
+    links: 
+      - db
+  
+  facereco:
+    build: ./Training
+    restart: always
+    links:
+      - db
+  
+  db:
+    build: ./db
+    restart: on-failure
+    volumes:
+        - mysqlvol_errorlog:/var/lib/mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: noonewillseeitanywaysonothingcomesuphere
+        MYSQL_DATABASE: app
+    ports:
+        - 3306:3306
+    
