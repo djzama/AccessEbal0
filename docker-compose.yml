@@ -1,17 +1,28 @@
-version: '0.6'
+version: '3.3'
+volumes:
+  data-volume: {}
+  mysqlvol_errorlog:
 services:
-  database:
-    build: ./mysql/
-    command: mysqld --user=root --verbose
-    environment:
-      MYSQL_DATABASE: "faces"
-      MYSQL_USER: "adm1n"
-      MYSQL_PASSWORD: "str0ng_P@sswd_0k"
-      MYSQL_ROOT_PASSWORD: "snorki"
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
   main:
-      build: ./app
-      command: python3 main.py
-      environment:
-        TelegramBotApi: "5876734711:AAEuAXxnxjF31z-_bPZAxNRrOaOzfdOjb6M"
-
+    build: ./Video
+    restart: always
+    links: 
+      - db
+  
+  facereco:
+    build: ./Training
+    restart: always
+    links:
+      - db
+  
+  db:
+    build: ./db
+    restart: on-failure
+    volumes:
+        - mysqlvol_errorlog:/var/lib/mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: noonewillseeitanywaysonothingcomesuphere
+        MYSQL_DATABASE: app
+    ports:
+        - 3306:3306
+    
